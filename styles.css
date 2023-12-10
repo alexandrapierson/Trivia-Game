@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
+
+* {
+  font-family: "Montserrat";
+}
+
+button {
+  height: 30px;
+  background-color: #004dff;
+  border: 0px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+button:disabled {
+  background-color: #303030;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.question-categories,
+.question-difficulty,
+.question-display {
+  max-width: 900px;
+  margin: auto;
+}
+
+.player-input {
+  max-width: 400px;
+  margin: auto;
+}
+
+.reset-game {
+  max-width: 800px;
+  margin: auto;
+}
+
+.reset-game button {
+  display: block;
+  margin: auto;
+  min-width: 200px;
+}
+
+.answer-display,
+.scores {
+  max-width: 600px;
+  margin: auto;
+}
+
+.validate-button {
+  display: block;
+  margin: auto;
+  min-width: 200px;
+}
+
+.question-categories button {
+  width: 19%;
+}
+
+.question-difficulty button {
+  width: 24%;
+}
+
+#player-scores th {
+  width: 100px;
+}
+
+#player-scores th:nth-child(1) {
+  text-align: left;
+  width: 200px;
+}
+
+#player-scores td:nth-child(1) {
+  text-align: left;
+}
+
+#player-scores td {
+  text-align: center;
+}
+
+.win-condition-met {
+  text-align: center;
+  font-size: 40px;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Quake</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Quiz Quake</h1>
+      <p>
+        Welcome to Quiz Quake, where trivial pursuits meet triumphs, and your
+        wit battles wittiness! It's not just a trivia game; it's a cerebral
+        showdown for 1-4 players, pitting your knowledge against the quirky and
+        the absurd. You're not just setting the score; you're setting the stage
+        for epic battles of brainpower. Choose your difficulty, challenge your
+        friends, and conquer the realm of trivial feats because in Quiz Quake,
+        the game is in your hands, and victory is just a question away!
+      </p>
+
+      <!-- ADD PLAYERS -->
+      <div class="player-input">
+        <form class="add-player">
+          <label>
+            Who's Playing?
+            <input
+              type="text"
+              id="player-name"
+              name="player-name"
+              required
+              maxlength="16"
+            />
+          </label>
+          <button type="submit" id="add-player">Add Player</button>
+        </form>
+        <p id="player-quantity-error"></p>
+      </div>
+
+      <!-- QUESTION CATEGORY -->
+      <div class="question-categories">
+        <h2 id="current-player"></h2>
+        <h2>Choose your genre:</h2>
+        <button id="science">Science</button>
+        <button id="history">History</button>
+        <button id="geography">Geography</button>
+        <button id="entertainment">Entertainment</button>
+        <button id="sports">Sports</button>
+      </div>
+
+      <!-- QUESTION DIFFICULTY -->
+      <div class="question-difficulty">
+        <h2>Choose your difficulty:</h2>
+        <button id="easy">Novice</button>
+        <button id="medium">Quiz Whiz</button>
+        <button id="hard" onclick="selectDifficulty('hard')">Brainaic</button>
+        <button id="insane" onclick="selectDifficulty('insane')">
+          Mastermind
+        </button>
+      </div>
+
+      <!-- QUESTION -->
+      <div class="question-display">
+        <form>
+          <h3 id="selected-question"></h3>
+          <label>
+            <input type="radio" id="first-radio" name="answer" value="" />
+            <span id="first-answer"></span>
+          </label>
+          <br />
+          <label>
+            <input type="radio" id="second-radio" name="answer" value="" />
+            <span id="second-answer"></span>
+          </label>
+          <br />
+          <label>
+            <input type="radio" id="third-radio" name="answer" value="" />
+            <span id="third-answer"></span>
+          </label>
+          <br />
+          <label>
+            <input type="radio" id="fourth-radio" name="answer" value="" />
+            <span id="fourth-answer"></span>
+          </label>
+          <br />
+          <br />
+          <button class="validate-button" type="button" id="validate-answer">
+            Submit Answer
+          </button>
+        </form>
+      </div>
+
+      <div class="answer-display">
+        <p id="display-player-answer"></p>
+        <p id="display-correct-answer"></p>
+      </div>
+
+      <!-- PLAYER SCORE TABLE -->
+      <div class="scores">
+        <table id="player-scores">
+          <thead>
+            <tr>
+              <th>Player Name</th>
+              <th>Science</th>
+              <th>History</th>
+              <th>Geography</th>
+              <th>Entertainment</th>
+              <th>Sports</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="win-condition-met">
+      <p id="winner"></p>
+    </div>
+
+    <div class="reset-game">
+      <button id="reset-players">Restart Game</button>
+    </div>
+
+    <script src="triviaQuestions.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
