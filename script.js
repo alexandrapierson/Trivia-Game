@@ -61,17 +61,20 @@ let turnCounter = 0;
 let playerTurn = 1;
 
 let getStoredTurn = JSON.parse(localStorage.getItem("playerTurn")) || 1;
+let getTurnCount = JSON.parse(localStorage.getItem("turnCount")) || 0;
 let existingData = JSON.parse(localStorage.getItem("playerData")) || [];
 
 // Find all radio buttons with the name of "answer" and set them to the variable radioButtons
 let radioButtons = document.querySelectorAll('input[name="answer"]');
 
 playerTurn = getStoredTurn;
+turnCounter = getTurnCount;
 
 // Resets all stored data
 resetPlayers.addEventListener("click", function () {
   localStorage.removeItem("playerData");
   localStorage.removeItem("playerTurn");
+  localStorage.removeItem("turnCount");
   location.reload();
 });
 
@@ -149,7 +152,13 @@ function enableAnswerButton() {
 }
 
 function disableAddPlayerButton() {
-  addPlayer.disable = true;
+  addPlayer.disabled = true;
+}
+
+function validateTurnCounter() {
+  if (turnCounter > 0) {
+    disableAddPlayerButton();
+  }
 }
 
 function isPlayerThere() {
@@ -311,6 +320,11 @@ let selectedQuestion = null;
 
 // SETTING THE TRIVIA QUESTION
 function displayQuestion() {
+  turnCounter++;
+  localStorage.setItem("turnCount", JSON.stringify(turnCounter));
+
+  validateTurnCounter();
+
   if (selectedCategory !== null && selectedDifficulty !== null) {
     enableAnswerButton();
 
@@ -419,13 +433,12 @@ function winCondition() {
 
       disableCategoryButtons();
       disableDifficultyButtons();
+      disableAddPlayerButton();
     }
   }
 }
 
 validateAnswer.addEventListener("click", function () {
-  turnCounter++;
-
   // Search triviaQuestions.js for the selected question to find the correct answer
   let correctAnswer =
     triviaQuestions[selectedCategory][selectedDifficulty][selectedQuestion]
@@ -548,7 +561,11 @@ function loadPlayerData() {
   // Get existing player data from local storage
   let existingData = JSON.parse(localStorage.getItem("playerData")) || [];
 
+  console.log(turnCounter);
+
   isPlayerThere();
+
+  validateTurnCounter();
 
   // Loop through the existing data and update the table
   existingData.forEach(function (playerData) {
