@@ -409,7 +409,7 @@ function updatePlayerScores(playerName, category, points) {
 }
 
 function winCondition() {
-  let winValue = 1;
+  let winValue = 10;
 
   for (i = 0; i < existingData.length; i++) {
     // Gets the point value of every category for the player selected by the index of i
